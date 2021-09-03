@@ -28,21 +28,20 @@
         
 /*   정육면체로 그려도 2차원으로밖에 안보여서 Z축으로 회전해줘야 3차원적으로 보임 */*/
     /* 옆면 */
-        div:nth-child(1){transform: rotateY(0deg) translate3d(0px, 0px, 100px); background: blue;}
-        div:nth-child(2){transform: rotateY(90deg) translate3d(0px, 0px, 100px); background: red;}
-        div:nth-child(3){transform: rotateY(180deg) translate3d(0px, 0px, 100px); background: green;}
-        div:nth-child(4){transform: rotateY(270deg) translate3d(0px, 0px, 100px); background: black;}
+        div:nth-child(1){transform: rotateY(180deg); background: pink;}
+        div:nth-child(2){transform: rotateY(160deg); background: red;}
+        div:nth-child(3){transform: rotateY(180deg); background: green;}
+
         
     /* 위아래면*/
         div:nth-child(5){transform: rotateX(90deg) translate3d(0px, 0px, 100px);background: orange;}
-        div:nth-child(6){transform: rotateX(270deg) translate3d(0px, 0px, 100px);background: #DAD9FF;}
-        
+     
         @keyframes ani{
             from{
                 transform: rotate(0deg 0deg 0deg);      
             }
             to{
-                transform: rotateX(360deg) rotateY(90deg) rotateZ(360deg);
+                transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
             }
         }
         
