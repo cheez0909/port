@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>포트폴리오</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/colorbox.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="img10/logo_1.png">
+    <!--    파비고 - 자기 아이콘 떠있는 곳 ex.네이버 -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <!--    폰트 적용 구글폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<!--    폰트 구글 한국어-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <!--        폰트어썸 아이콘 적용 -->
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
+
+   <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery.colorbox-min.js"></script> <!--모달창띄우는애-->
+    
+    <script>
+        $(function(){
+            //오픈시 무조건 화면 위치를 맨 위로 가져간다.
+//            $("body, html").stop().animate({"scrollTop":0}, 500);
+            var size = $('body').width();
+
+            if (size > 1390) {
+                $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:760});
+            } else if (850 < size && size <= 1389){
+                $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:560});
+            } else if (500 < size && size <= 849){                               
+                $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:456});
+            } else if (size <= 500){  
+                console.log("aaaa");
+                $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:300});
+            };
+
+            $(window).resize(function(){
+                var size = $('body').width();
+                
+                if (size > 1390) {
+                    $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:760});
+                } else if (850 < size && size <= 1389){
+                    $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:560});
+                } else if (500 < size && size <= 849){                               
+                    $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:456});
+                } else if (size <= 500){                               
+                    $(".portfolio_btn").colorbox({iframe:true, innerWidth:'80%', innerHeight:300});
+                };
+            });
+            //현재 스크롤 위치를 찾아서 메뉴 색깔을 바꿔준다.
+            $(window).scroll(function(){
+                var ht = $(window).height();
+                var scroll = $(window).scrollTop();
+
+                if(scroll>=ht*0 && scroll<ht*1){
+                    $("#navTop_box #topMenu li a").removeClass();
+                    $("#navTop_box #topMenu li").eq(0).find('a').addClass("active");
+                }
+                if(scroll>=ht*1 && scroll<ht*2){
+                    $("#navTop_box #topMenu li a").removeClass();
+                    $("#navTop_box #topMenu li").eq(1).find('a').addClass("active");
+                }
+                if(scroll>=ht*2 && scroll<ht*3){
+                    $("#navTop_box #topMenu li a").removeClass();
+                    $("#navTop_box #topMenu li").eq(2).find('a').addClass("active");
+                }
+                if(scroll>=ht*3 && scroll<ht*4){
+                    $("#navTop_box #topMenu li a").removeClass();
+                    $("#navTop_box #topMenu li").eq(3).find('a').addClass("active");
+                }
+            });
+        });
+        
+        $(function(){
+            let current = 0;
+            let banner = $(".slide");
+            let id = banner.length;
+            
+            $(".right_arrow").click(function(){
+                let prev = banner.eq(current);
+                move(prev, 0, '-100%');
+                
+                current++;
+                if(current == id){
+                    current=0;
+                }
+                let next = banner.eq(current);
+                move(next, '100%', 0);
+                
+            });
+            $(".left_arrow").click(function(){
+
+                let prev = banner.eq(current);
+                move(prev, 0, '100%');
+                
+                current--;
+                if(current < 0){
+                    current=id-1;
+                }
+                let next = banner.eq(current);
+                move(next, '-100%', 0);
+            });
+            
+            function move(tg, start, end){
+                tg.css('left', start)
+                .stop()
+                .animate({left:end}, 1000);
+            }
+        });
+    </script>
+    <style>
+/* 스크롤 부드럽게        */
+        
+      
+html{
+    scroll-behavior: smooth;
+}
+
+.dummy {
+    width: 100%; height: 70px;
+}
+
+/*폰트 설정 */
+#navTop_box>ul {
+      font-family: 'Lobster', cursive;
+}
+
+/*        메뉴 바 아래 선 */
+#navTop {
+    position: fixed; top:0px;
+    width: 100%; height: 70px;
+    z-index: 1; background: #fff;
+    border-bottom: 1px solid #fff;
+}
+        
+#navTop_box{
+    width: 80%; height: 70px; margin: auto;
+    transition: all 1s;
+    position: relative;
+}
+        
+#navTop_box #logo {
+    width: 240px; overflow: hidden;
+    _position: relative;
+}
+
+#navTop_box #logo>div {
+    width: 80px; float: left; line-height: 70px;
+}
+
+#navTop_box #logo>span {
+    display: inline-block; font-size: 14px;
+    position: relative; top: 30px; left: 10px;
+}
+
+#navTop_box #topMenu {
+    position: absolute; right: 0; top: 0;
+    overflow: hidden;
+}
+
+#navTop_box #topMenu li {
+    width: 80px; height: 70px;
+    float: left; padding-left: 30px; line-height: 70px;
+}
+        
+#navTop_box #topMenu li>a>.one {
+            float: left; margin-top: 20px;
+            width: 30px; height: 30px; border-radius: 15px;
+            background: radial-gradient(#D1B2FF 40%, #fff 80%);
+        }
+        
+
+#navTop_box #topMenu li>a.active>.one {
+        transform: scale(150%);
+    background: radial-gradient(#A566FF 40%, #fff 70%);
+}
+
+#navTop_box #topMenu li>a>.one:hover  {
+    transform: scale(150%);
+      transition: 0.2s;
+    background: radial-gradient(#A566FF 40%, #fff 70%);
+        }  #D9E5FF 60%, #B2CCFF 100%);
+        
+#navTop_box #topMenu li>a>.one:hover .text {
+           right: 10px;
+        }
+
+/* 공통  */
+.section {
+    width: 100%; height: 100vh;
+}
+
+/*s0 앞표지 calc시 부호 앞뒤를 붙이면 계산을 못한다.*/
+        
+.section_home {
+
+    background-color: #DAD9FF;
+    width: calc(100% - 140px);
+    height: calc(100% - 70px);
+    margin: auto;
+    width: 50%; height: 100%;
+    margin: auto;
+    float: left;
+    animation: 1s;
+    animation-fill-mode: forwards;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5;
+}
+        
+  
+        
+         .efg {
+            position: absolute;
+            width: 100%; height: 100%;
+            left: 100%;
+            padding: 100px;
+            text-align: center;
+            padding-top: 150px;
+            transition: 0.5s;
+        }
+
+        .efg h1 {
+    color: black; font-size: 130px;
+    position: absolute; top: 20%; right: 00%;
+    font-family: 'Lobster', cursive;
+    animation: 2s;
+    animation-fill-mode: forwards;
+    border: 10px double black;
+    padding-left: 30px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+        }
+        
+        .section_home:hover .portfolio{
+            transform: scale(0);
+            transition: 1s;
+        }
+
+        .section_home:hover .efg {
+            left: 0;
+        }
+       
+.section_home1 {
+    float: right;
+    animation: 1s;
+    animation-fill-mode: forwards;
+            margin: auto;     
+        position: relative;
+      background-color: #DAD9FF;
+/*    background: radial-gradient(#B5B2FF 60%, #fff 100%);*/
+        
+    width: calc(100% - 140px);
+    height: calc(100% - 70px);
+    width: 50%; height: 100%;
+    margin: auto;
+        overflow: hidden;
+        transition: 0.5;
+        }
+    .abcd {
+            position: absolute;
+            width: 100%; height: 100%;
+            right: 100%;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .section_home1 .abcd {
+/*            background: linear-gradient(to right, blue, transparent);*/
+        }
+        .abcd h1 {
+   color: black; font-size: 150px;
+    position: absolute; top: 52%; left: 0%;
+    font-family: 'Lobster', cursive;
+    animation: 2s;
+    animation-fill-mode: forwards;
+
+    padding-bottom:30px;
+    padding-left: 50px;
+    margin-top: 100px;
+        }
+        
+        .section_home1:hover {
+            
+        }
+
+        .section_home1:hover .abcd {
+            right: 0%;
+        }
+        
+.s0>.portfolio h1 {
+    color: white; font-size: 150px;
+    position: absolute; top: 50%; left: 50%;
+    font-family: 'Lobster', cursive;
+    animation: 2s;
+    animation-fill-mode: forwards;
+    padding-left: 30px;
+}
+.s0>.profile h1 {
+    color: white; font-size: 150px;
+    position: absolute; top: 50%; right: 50%;
+    text-align: right;
+    font-family: 'Lobster', cursive;
+    animation: 2s;
+    animation-fill-mode: forwards;
+   
+    padding-right: 30px;
+}
+.s0>.portfolio h1:hover {
+    color: black;
+    
+   border: 10px double black;
+        }
+.s0>.profile h1:hover {
+    color: black;
+      border: 20px bouble black;
+        }
+
+        @-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+        
+        
+/* s1 profile 관련 */
+/*.s1 {padding: 70px;}/* 프로필 부분 왼쪽 여백 */
+.s1 { animation: 2s; }
+        
+/*
+.s1>h2 {
+    margin-left: 250px;
+    width: 20%; height: 100px; text-align: center;
+    line-height: 100px; color: #fff; font-size: 40px;
+    background-color: #DAD9FF;
+    font-family: 'Lobster', cursive;
+}  프로필 상단바 
+*/
+
+.s0>.portfolio>a>h1 {
+    border: 10px double white;
+    padding-bottom:30px;
+    padding-right: 20px;
+    margin-top: 100px;
+        }
+        
+.pr_container {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+/*    margin-top: 100px;*/
+    gap: 20px;
+/*    background: black;*/
+    
+}
+
+.pr_profile {
+    flex: 1; /*3분의 1*/
+/*    padding-left: 50px;*/
+    animation-fill-mode: forwards;
+    background: linear-gradient(to bottom, #ECEBFF 50%, #DAD9FF 80%); 
+    height: 100%; 
+    border-right: 15px dashed #D9D6FF;
+}
+.pr_profile>.a {
+        margin-top: 100px; 
+    width: 90%;
+        }
+.pr_profile>.a>.i{
+    padding-left: 6%;
+        }
+
+/*
+        .pr_profile>.a>ul>div{ 
+            font-family: 'Lobster', cursive;
+            font-size: 30px;
+            margin-top: 20px;
+            margin-right: 20%;
+            text-align: center;
+            padding-bottom: 30px;
+           
+            margin-left: 80px;
+        }  
+*/
+
+        .s2{
+                font-family: 'Gowun Dodum', sans-serif;
+        }
+.pr_profile>.a>ul>.ct {
+    text-align: center;
+    font-family: 'Gowun Dodum', sans-serif;
+    
+    font-size: 20px;
+    margin-right: 10%;
+    margin-top: 10%;
+        }
+
+        .pr_profile>.a>ul>.ct_txt {
+    text-align: center;
+     font-family: 'Gowun Dodum', sans-serif;
+    margin-right: 80%;
+    font-size: 20px;
+   margin-top: 15%;
+            font-weight: bold;}
+            .pr_profile>.a>.i>img{
+           border: 5px double black;
+            }
+        
+        .pr_profile>.a>ul>.ct_txt>ul {
+            margin-top: 10px;
+        }
+        .pr_profile>.a>ul>.contact {
+            text-align: center;
+            margin-right: 35px;
+            margin-top: 10px;
+        } 
+/*
+.pr_profile>.a>ul>li:nth-child(1) {
+    text-align: center;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 30px;
+margin-right: 20%;
+    margin-top: 10%;
+}
+        .pr_profile>.a>ul>li:nth-child(2) {
+            
+    padding-left: 30px; line-height: 30px;
+    text-align: center;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 20px;
+margin-right: 28%;
+}
+        .pr_profile>.a>ul>li:nth-child(3) {
+    padding-left: 30px; line-height: 30px;
+    text-align: center;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 20px;
+margin-right: 30%;
+}
+*/
+        
+/*
+        .pr_profile>.a>ul>li:nth-child(4) {
+    padding-left: 30px; line-height: 30px;
+    text-align: center;
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 20px;
+
+}
+*/
+/*
+.pr_profile>.a>ul>li>i {
+    margin-right: 10px;
+    font-family: 'Gowun Dodum', sans-serif;
+}
+*/
+/*
+        .pr_profile>.a>li>i {
+            font-size: 80px;
+        }
+*/
+.right_box1 {
+    flex: 1.5; /*3분의 2*/
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+    animation-fill-mode: forwards;
+    font-family: 'Gowun Dodum', sans-serif;
+   text-align: center;
+    margin-bottom: 350px;
+
+/*    padding-bottom: 80%*/
+}
+/*아이콘 사이즈*/
+.right_box1>.pr_box>li>i {
+    font-size: 80px;}
+        
+.right_box1>.pr_box>.pr_txt{
+    text-align: center;
+    margin-left: 80px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+        }
+
+.right_box1>.pr_box>.cer_txt {
+    text-align: center;
+    margin-top: 30px;
+     
+        }
+        .right_box3>.pr_box>h3 {
+            margin-bottom: 20px;
+        }
+.cer_txt>ul>li {
+        font-weight: bold;
+        }
+.cer_txt>div {margin-bottom: 10px;}
+ 
+.right_box3 {
+    flex: 1.5; /*3분의 2*/
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+    animation-fill-mode: forwards;
+     font-family: 'Gowun Dodum', sans-serif;
+   text-align: center;
+            margin-bottom: 300px;
+/*             padding-bottom: 30%*/
+      
+}
+ 
+
+.right_box1 h3 {
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+/*    border-left: 7px solid black;*/
+/*    border-right: 7px solid black;*/
+/*
+margin-left: 25%;
+margin-right: 30%;
+*/
+/*
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px black;
+*/
+        }
+.right_box3 h3 {
+            font-family: 'Lobster', cursive;
+            font-size: 40px;
+/*    border-left: 7px solid black;*/
+/*    border-right: 7px solid black;*/
+/*
+margin-left: 25%;
+margin-right: 30%;
+*/
+/*
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px black;
+*/
+        }
+        .ct_port>ul>li>a>i {
+            font-size: 100px;
+        }
+        .ct_port>ul { 
+            margin-top: 10px;
+            
+        }
+.pr_title {
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+        
+.pr_date {
+    float: left;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+        
+.pr_txt {
+    line-height: 1.5;
+    float: left;
+    _padding-top: 20px;
+    padding-left: 10px;
+}
+.pr_txt>div {
+    font-weight: bold; .pr_txt 전부 볼드 
+}
+
+/*.edu_txt>div{} 에듀텍스트만 진해짐*/
+
+        .ct_box {
+            padding-bottom: 10%
+        }
+.ct_inbox {
+    padding: 20px;
+    background: white;
+    border: 8px double #E8D9FF;
+    margin-top: 120px
+ 
+}
+
+        .s1>.pr_container {
+            border: 5px double gray;
+            margin-bottom: 300px;
+            height: 800px;
+            margin-top: 50px;
+
+        }
+.ct_title {
+    text-align: center;
+}
+
+.ct_txt {
+/*    display: flex;*/
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+        
+.ct_txt>ul {
+    flex: 1;
+    text-align: center;
+    line-height: 50px;
+}
+   
+.ct_txt>ul>li>img {
+    width: 60px; height: 60px;
+}
+        .ct_port>ul>li>a>img {
+    width: 100px; height: 90px;
+}
+        .ct_txt>ul>li>a>img {
+    width: 60px; height: 60px;
+}
+
+/*s2 포트폴리오 영상 부분이 올라가는 페이지*/
+        
+
+
+.section_content {
+    position: relative;
+    width: 100%; height: 100vh;/*뷰포트헤이트 단위, 퍼센트랑 동일, 비율에 따라움직임, 내 화면의 해상도에 따라 움직임*/
+    overflow: hidden;
+}
+
+.section_content>h1 {
+    width: 100%; height: 100px; text-align: center;
+    line-height: 100px; color: #fff; font-size: 30px;
+    background: #DAD9FF;
+    font-family: 'Lobster', cursive;
+}
+.slide_wrap {
+    display: flex;
+    width: 300%;
+
+}
+.slide {    
+/*    background: #ECEBFF;*/
+    position: absolute; left: 100%;
+    width: 100%;
+    display: flex;
+    margin: 0 100px;
+}
+
+.slide>div {
+    flex: 1;
+    justify-content: space-around;
+}
+
+.slide>.image {
+    position: relative;
+    top: 15vh;
+}
+
+.slide>.image>img {
+    width: 100%;
+}
+
+.slide .pf_txt_container {
+    position: relative;
+    top: 18vh;
+    
+}
+.slide .pf_txt_container .pf_title {
+    width: 60%; height: 50px; margin: auto;
+    border-radius: 10px; background: linear-gradient(to bottom, #ECEBFF 50%, #DAD9FF 80%);
+    line-height: 50px; text-align: center;
+}
+
+
+.slide .pf_txt_container table {
+    width: 80%;
+    margin: auto;
+    line-height: 25px; font-size: 16px;
+    margin-left: 20%; margin-top: 30px;
+}
+
+.slide .pf_txt_container table tr {
+    line-height: 2;
+}
+
+.slide .pf_txt_container table tr td:nth-child(1){
+    width: 30%
+}
+
+.slide .pf_txt_container table tr td:nth-child(2){
+    width: 70%
+}
+
+/*화살표버튼*/
+.left_arrow {
+    position: absolute; left: 10px; top: 45%;
+    cursor: pointer; font-size:80px;
+    color: #EBE8FF;
+}
+.right_arrow {
+    position: absolute; right: 10px; top: 45%;
+    cursor: pointer;font-size:80px;
+      color: #EBE8FF;
+}
+        .right_arrow:hover{
+            color: #B5B2FF;
+            transform: scale(120%);
+        }
+          .left_arrow:hover{
+            color: #B5B2FF;
+            transform: scale(120%);
+        }
+        .pf_gosite>ul>img{
+            width: 60px; height: 60px;
+        }
+        .pf_txt_container>ul{
+            margin-top: 20px;
+        margin-left: 40%}
+        .pf_txt_container>ul>img {
+            width: 60px; height: 60px;
+            
+        }
+/*go버튼*/
+.pf_gosite {
+    position: relative; text-align: center;
+    margin-top: 80px; margin-bottom: 100px;
+}
+
+.pf_gosite a {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%; padding: 10px 0;
+    font-size: 18px;
+    border: 1px solid #aaa;
+    transition: all 0.5s;
+}
+
+.pf_gosite a:hover {
+    color: #fff; border: 1px solid #DAD9FF;
+}
+
+.pf_gosite a:before {
+    content: ""; z-index: -1;
+    position: absolute; background: #DAD9FF;
+    transition: 1s;
+    left: 50%; top: 0; transform: translateX(-50%);
+    width: 0; height: 100%;
+}
+
+.pf_gosite a:hover:before {width: 100%;}
+
+
+        
+        
+        
+        
+/*태블릿 700px 이상 1279px이하*/
+
+@media screen and (min-width: 700px) and (max-width: 1279px) {
+/*    s0 앞표지 */
+    .section_home h1 {
+        font-size: 80px;
+    }
+    
+/*    공통*/
+    dummy {
+        width: 100%; height: 60px;
+    }
+/*    s1 프로파일*/
+    .pr_container {
+        width: 90%; flex-direction: column;
+        margin-top: 30px;
+    }
+    .pr_profile>.a>div {
+        float: left;
+        
+    }
+    .pr_profile>.a>ul {
+        float: left;
+        margin-left: 20px;
+    }
+    .pr_profile>ul>li {
+        padding-left: 20px;
+    }
+    .ct_txt>ul>li>img {
+        width: 40px; height: 40px;
+    }
+
+    .ct_inbox {
+        padding: 0;
+    }
+    .right_box>div {
+        margin-top: 20px;
+    }
+/*    s2포트폴리오*/
+    .slide {
+        flex-direction: column;
+        margin: 0 67px;
+    }
+    .slide>.image {
+        width: 82%;
+            position: relative;
+        top: 5vh;
+    }
+    .slide .pf_txt_container {
+        position: relative;
+        top: 10vh; width: 80%;
+    }
+    .pf_gosite {
+        margin-top: 30px;
+    }
+    .left_arrow, .right_arrow {
+        width: 30px;
+    }
+}
+
+/*<<<<<<<<<<<<<<<<<<<< 모바일 699px이하 >>>>>>>>>>>>>>>>>>>>>*/
+@media screen and (max-width: 699px){
+    #navTop {
+        width: 100%; height: 50px;
+    }
+    #navTop_box {
+        width: 90%; height: 50%;
+    }
+    #navTop_box #logo>div {
+        width: 50px; line-height: 50px;
+    }
+    #navTop_box #logo>div>img {
+        width: 90%;
+    }
+    #navTop_box #logo>span {display: none;}
+    #navTop_box #topMenu li {
+        padding-left: 10px; line-height: 50px;
+    }
+    #navTop_box #topMenu li a {
+        font-size: 14px;
+    }
+    #navTop_box #topMenu li>a.active {
+        border-bottom: 0; padding: 4px;
+        background:#b3d0bc;
+        color: #fff; border-radius: 5px;
+    }
+    /********** s0 앞표지 ************/
+    .section_home {
+        width: 85%; height: 95vh;
+        margin: auto;
+    }
+    .section_home h1 {
+        font-size: 40px;
+    }
+    /*********** 공통 ****************/
+    .dummy {
+        width: 100%; height: 50px;
+    }
+    
+    /*********** s1 프로파일 **********/
+    .s1 {
+       background-color: rgb(238, 238, 238); 
+    }
+    .s1>h2 {
+        height: 50px;
+        line-height: 50px;
+        font-size: 23px;
+    }
+    .pr_container {
+        width: 100%;
+        margin-top:15px;
+        flex-direction: column;
+    }
+    .pr_profile {
+        position: relative;
+        padding:0;
+        width: 100%;
+    }
+ 
+    .pr_container .pr_profile div {
+        width: 40%;
+        margin-left: 5%;
+        float: left;
+    }
+    .pr_container .pr_profile div>img {
+        width: 90%;
+        margin: auto;
+    }
+    .pr_profile>ul {
+        float: left;
+        width: 50%;
+        border: none;
+        position: absolute;
+        right: 10px;
+        bottom: 5px;
+    }
+    .pr_profile>ul>li {
+        font-size: 13px;
+        padding-left:0; line-height: 1.5;
+    }
+    
+    .pr_profile>ul>li:nth-child(1) {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 3;
+    }
+    .pr_date, .pr_txt>ul {
+        display: none;
+    }
+    /*여기*/
+.cer_txt>ul {
+        display: none;
+    }
+    
+    .pr_title {
+        padding-left: 15px;
+        margin-left: 15px;
+        width: 30%;
+        font-size: 14px;
+        float: none;
+    }
+    .pr_txt {
+        width: 50%;
+        font-size: 12px;
+        float: none;
+        font-weight: normal;
+        padding-left: 40px;
+    }
+/*    여기*/
+.cer_txt {
+        width: 50%;
+        font-size: 12px;
+        float: none;
+        font-weight: normal;
+        padding-left: 40px;
+    }
+    .edu_txt>div {
+        font-weight: normal;
+    }
+    .cer_box {
+        margin-top: 10px;
+    }
+    .ct_box {
+        width: 92%;
+        margin: auto;
+        margin-top: 30px;
+    }
+    .ct_title {
+        font-size: 14px;
+    }
+    .ct_txt {
+        flex-direction: column;  
+        margin-top: 10px;
+    }
+    .ct_txt>ul {
+        width: 74%;
+        margin: auto;
+        line-height: 2;
+    }
+    .ct_txt>ul>li {
+        float:left;
+        font-size: 14px;
+        text-align: center;
+        padding-left: 10px;
+    }    
+    .ct_txt>ul>li>img {
+        width: 20px;
+        height: 20px;
+    }
+    .ct_inbox {
+        padding: 15px;
+    }
+    
+    
+    /*********** s2 포트폴리오 ********/
+/*********** s2 포트폴리오 ********/
+    .s2>h2 {
+        height: 50px;
+        line-height: 50px;
+        font-size: 23px;
+    }
+    .slide {
+        flex-direction: column;
+        margin: 0px 35px;
+    }
+    .slide>.image {
+        width: 82%;
+        position: relative;
+        top: 5vh;
+    }
+    .slide .pf_txt_container {
+        position: relative;
+        top: 10vh;
+        width: 80%;
+    }
+    .slide .pf_txt_container .pf_title {
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+    }
+    .slide .pf_txt_container table {
+        width: 95%;
+        margin: auto;
+        line-height: 1.5;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+    .pf_gosite {
+        width: 50%;
+        margin: auto;
+        margin-top: 10px;
+    }
+    .pf_gosite a {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    .left_arrow, .right_arrow {
+        width: 20px; top: 30%;
+    }
+ 
+
+    } </style>
+    
+    
+    
+</head>
+
+<body>
+   
+<!--   메뉴 바 -->
+    <nav id="navTop">
+        <div id="navTop_box">
+            <div id="logo" class="clear">
+                <div><img src="img10/logo_1.png" alt="logo"></div>
+                <span>   </span>
+            </div>
+            <ul id="topMenu" class="clear">
+                <li><a href="#first" class="active"><div class="one"></div></a></li>
+               <li><a href="#second"><div class="one"></div></a></li>
+               <li><a href="#third"><div class="one"></div></a></li> 
+            </ul>
+        </div>
+    </nav>
+    
+<!--    첫 페이지 -->
+<div class="section s0" id="first">
+    <div class="section_home" style="visibility: visible; animation-name: fadeInUp";>
+    <a href="#second"><div class="efg"><h1>PROFILE</h1></div></a>
+    </div>
+    <div class="section_home1" style="visibility: visible; animation-name: fadeInUp";>
+        <a href="#third"><div class="abcd"><h1>PORTFOLIO</h1></div></a>
+    </div>
+    <div class="portfolio" style="visibility: visible; animation-name: fadeInUp";>
+        <a href="#third"><h1>PORTFOLIO</h1></a>
+    </div>
+    <div class="profile" style="visibility: visible; animation-name: fadeInUp";>
+        <a href="#second"><h1></h1></a>
+    </div>
+</div>
+
+<!--프로필 영역-->
+<div class="section s1" id="second" style="visibility: visible; animation-name: fadeInUp">
+ <div class="dummy"></div>
+<!--  <h2>PROFILE</h2>-->
+   <div class="pr_container clear">
+      
+       <div class="pr_profile">
+          <div class="a">
+<!--          <li><i class="fas fa-id-card-alt"></i></li>-->
+           <div class="i">
+            <img src="img10/a.jpg" alt="사진">
+           </div>
+           
+<!--           <div><h1>profile</h1></div>-->
+           <ul>
+              <div class="ct">
+               <li>이다은 </li>
+<!--               <li><i class="fas fa-user"></i> 영상관련 직종</li>-->
+               <li>2000.01.01</li>
+               <li> 서울 당산동 거주</li>
+               </div>
+<!--               아이콘 추가 폰트어썸-->
+           </ul>
+  
+           <ul>
+
+               <div class="ct_txt">
+                      
+                       <ul>
+                           <li><img src="img10/con_phone.png" alt="phone"></li> 
+                       </ul>
+                       <ul>
+                           <li><a href="mailto:bin0696@naver.com?subject=contact"><img src="img10/con_email.png"></a></li>
+                 
+                       </ul>
+                       <ul>
+                           <li>
+                               <img src="img10/con_kakao.png" alt="sns">
+                           </li>
+                   
+                       </ul>
+                   </div>
+                   
+           </ul>
+             <ul>
+               <div class="contact">
+                   <li>010 3415 0026</li>
+                   <li>bin0696@naver.com</li>
+                   <li>ID : dani99</li>
+               </div>
+           </ul>
+       </div>
+       
+       </div>
+       
+       <div class="right_box1">
+          <div class="pr_box edu_title clear">
+<!--              <h3 class="pr_title edu_title">EDUCATION</h3>-->
+              <li><i class="fas fa-graduation-cap"></i></li>
+              <div class="pr_txt edu_txt">
+                 <div>2021.06.15~2021.11.15</div>
+                  <div>영상편집, 모션그래픽</div>
+                  <ul>
+                      <li>- 교육기관 : 방송정보국제요육원(서울 영등포구) -</li>
+                      <li>- 교육기간 : 2021.06.15~2021.11.15 -</li>
+                      <li>- 교육내용 : 영상편집 및 모션그래픽 -</li>
+                  </ul>
+              </div>
+              
+<!--
+              <div class="pr_txt edu1_txt">
+                 <div>2021.06.15~2021.11.15</div>
+                  <div>영상편집, 모션그래픽</div>
+                  <ul>
+                      <li>- 교육기관 : 방송정보국제요육원(서울 영등포구) -</li>
+                      <li>- 교육기간 : 2021.06.15~2021.11.15 -</li>
+                      <li>- 교육내용 : 영상편집 및 모션그래픽 -</li>
+                  </ul>
+              </div>
+              <div class="pr_txt edu2_txt">
+                 <div>2021.06.15~2021.11.15</div>
+                  <div>영상편집, 모션그래픽</div>
+                  <ul>
+                      <li>- 교육기관 : 방송정보국제요육원(서울 영등포구) -</li>
+                      <li>- 교육기간 : 2021.06.15~2021.11.15 -</li>
+                      <li>- 교육내용 : 영상편집 및 모션그래픽 -</li>
+                  </ul>
+              </div>
+-->
+           </div>
+           
+           <div class="pr_box cer_box">
+<!--              <h3 class="pr_title cet_title">LICENSE</h3>-->
+             <li><i class="fas fa-certificate"></i></li>
+             <div class="cer_txt">
+                  <ul>
+                      <li>2018.11</li>
+                  </ul>
+                  <div>컴퓨터활용능력 1급</div>
+              
+                  <ul>
+                      <li>2017.11</li>
+                  </ul>
+                  <div>컴퓨터활용능력 1급</div>
+              </div>
+              
+<!--
+              <div class="pr_txt cer_txt">
+                  <div>컴퓨터활용 능력2급</div>
+                  <div>컴퓨터활용 능력1급</div>
+              </div>
+-->
+          </div>
+          
+          </div>
+    
+         <div class="right_box3">
+          <div class="pr_box port">
+            <h3>PORTFOLIO</h3>
+                <div class="ct_port">
+                       <ul>
+                           <li><a href="https://www.youtube.com/embed/1KaCz6jmnoc" class="portfolio_btn"><i class="fab fa-youtube"></i></a>
+                          </li>
+                       
+                           </ul>
+                           
+                           <ul>
+                           <li>
+                           <a href="https://www.naver.com"><img src="img10/%EB%B8%94%EB%A1%9C%EA%B7%B82.png"></a></li>
+                          
+                    
+                       </ul>
+               </div></div>
+<!--             <h3 class="pr_title hobby">CONTACT</h3>-->
+             
+<!--
+          
+           <div class="ct_box">
+               <div class="ct_inbox">
+                  <h3>CONTACT</h3>
+                   
+                   
+                   
+               </div>
+           </div>
+-->
+          
+           
+               
+           </div>
+           </div>
+       </div>
+
+
+
+<!--end of s1-->
+
+<!--포트폴리오 페이지-->
+<div class="section s2 section_content" id="third">
+ <div class="dummy"></div>
+<!--  <h1>PORTFOLIO</h1>-->
+
+   <div class="slide_wrap">
+<!--      첫번째 영상-->
+      <div class="d">
+       <div class="slide" style="left:0">
+          <div class="image">
+           <img src="img10/0.jpg" alt="영상사진">
+       </div>
+       <div class="pf_txt_container">
+          <h3 class="pf_title">영상제목1</h3>
+          <table>
+              <tr>
+                  <td class="pf_name">프로젝트명 :</td>
+                  <td class="pf_txt">테스트 프로젝트 입니다.</td>
+              </tr>
+              <tr>
+                  <td class="pf_name">제작소요기간 : </td>
+                  <td class="pf_txt">2021.06 2주</td>
+              </tr>
+              <tr>
+                  <td class="pf_name">설명 : </td>
+                  <td class="pf_txt">이런 영상을 제작하였습니다</td>
+              </tr>
+          </table>
+          <ul>
+             <img src="img10/애펙.png">
+           <img src="img10/일러스트.png">
+           <img src="img10/프리미어.png">
+           </ul>
+           <div class="pf_gosite">
+              
+               <a href="https://www.youtube.com/embed/1KaCz6jmnoc" class="portfolio_btn">click to play</a>
+           
+           </div>
+       </div>
+   </div></div>
+<!--   두번째 영상-->
+   <div class="slide">
+          <div class="image">
+           <img src="img10/0.jpg" alt="영상사진">
+       </div>
+       <div class="pf_txt_container">
+          <h3 class="pf_title">영상제목2</h3>
+          <table>
+              <tr>
+                  <td class="pf_name">프로젝트명 :</td>
+                  <td class="pf_txt">테스트 프로젝트 입니다.</td>
+              </tr>
+              <tr>
+                  <td class="pf_name">제작소요기간 : </td>
+                  <td class="pf_txt">2021.06 2주</td>
+              </tr>
+              <tr>
+                  <td class="pf_name">설명 : </td>
+                  <td class="pf_txt">이런 영상을 제작하였습니다</td>
+              </tr>
+          </table>
+            <ul>
+             <img src="img10/애펙.png">
+           <img src="img10/일러스트.png">
+           <img src="img10/프리미어.png">
+           </ul>
+           <div class="pf_gosite">
+               <a href="https://www.youtube.com/embed/1KaCz6jmnoc" class="portfolio_btn">click to play</a>
+         
+           </div>
+       </div>
+   </div>
+   <!--   세번째 영상-->
+   <div class="slide">
+          <div class="image">
+           <img src="img10/0.jpg" alt="영상사진">
+       </div>
+       <div class="pf_txt_container">
+          <h3 class="pf_title">영상제목3</h3>
+          <table>
+              <tr>
+                  <td class="pf_name">프로젝트명 :</td>
+                  <td class="pf_txt">테스트 프로젝트 입니다.</td>
+              </tr>
+              <tr>
+                  <td class="pf_name">제작소요기간 : </td>
+                  <td class="pf_txt">2021.06 2주</td>
+              </tr>
+              <tr>
+                  <td class="pf_name">설명 : </td>
+                  <td class="pf_txt">이런 영상을 제작하였습니다</td>
+              </tr>
+          </table>
+          <ul>
+             <img src="img10/애펙.png">
+           <img src="img10/일러스트.png">
+           <img src="img10/프리미어.png">
+           </ul>
+           <div class="pf_gosite">
+               <a href="https://www.youtube.com/embed/1KaCz6jmnoc" class="portfolio_btn">click to play</a>
+          
+           </div>
+       </div>
+
+   </div>
+</div>
+
+<div class="button">
+    <div class="left_arrow">
+    <i class="fas fa-arrow-left"></i></div>
+ <div class="right_arrow">
+    <i class="fas fa-arrow-right"></i></div>
+</div>
+
+</div>
+
+</body>
+</html>
